@@ -1,3 +1,5 @@
+#include <iostream>
+
 #if !defined(VECTOR)
 #define VECTOR // double inclusion guard
 
@@ -81,7 +83,20 @@ public:
  * @return Vector 
  */
 Vector Vector::add(Vector arg) {
+    if (arg.dimensions != this->dimensions) {
+        std::cerr << "ERROR: Dimensions of operands don't match\n"
+        << "Output will be a " << dimensions << "dimensional vector\n";
+    }
 
+    float *ans_values = new float[dimensions];
+    for (int i=0; i<dimensions; i++) {
+        ans_values[i] = this->value[i] + arg.value[i];
+    }
+
+    Vector ans(dimensions, ans_values);
+    delete ans_values;
+
+    return ans;
 }
 
 
@@ -92,7 +107,15 @@ Vector Vector::add(Vector arg) {
  * @return Vector 
  */
 Vector Vector::add(float arg) {
+    float *ans_values = new float[dimensions];
+    for (int i=0; i<dimensions; i++) {
+        ans_values[i] = this->value[i] + arg;
+    }
 
+    Vector ans(dimensions, ans_values);
+    delete ans_values;
+
+    return ans;
 }
 
 /**
@@ -102,7 +125,20 @@ Vector Vector::add(float arg) {
  * @return Vector 
  */
 Vector Vector::subtract(Vector arg) {
+    if (arg.dimensions != this->dimensions) {
+        std::cerr << "ERROR: Dimensions of operands don't match\n"
+        << "Output will be a " << dimensions << "dimensional vector\n";
+    }
 
+    float *ans_values = new float[dimensions];
+    for (int i=0; i<dimensions; i++) {
+        ans_values[i] = this->value[i] - arg.value[i];
+    }
+
+    Vector ans(dimensions, ans_values);
+    delete ans_values;
+
+    return ans;
 }
 
 /**
@@ -112,7 +148,15 @@ Vector Vector::subtract(Vector arg) {
  * @return Vector 
  */
 Vector Vector::subtract(float arg) {
+    float *ans_values = new float[dimensions];
+    for (int i=0; i<dimensions; i++) {
+        ans_values[i] = this->value[i] - arg;
+    }
 
+    Vector ans(dimensions, ans_values);
+    delete ans_values;
+
+    return ans;
 }
 
 /**
@@ -121,7 +165,15 @@ Vector Vector::subtract(float arg) {
  * @return Vector 
  */
 Vector Vector::negate()  {
+    float *ans_values = new float[dimensions];
+    for (int i=0; i<dimensions; i++) {
+        ans_values[i] = -this->value[i];
+    }
 
+    Vector ans(dimensions, ans_values);
+    delete ans_values;
+
+    return ans;
 }
 
 /**
@@ -131,7 +183,17 @@ Vector Vector::negate()  {
  * @return float 
  */
 float  Vector::dot(Vector arg) {
+    if (arg.dimensions != this->dimensions) {
+        std::cerr << "ERROR: Dimensions of operands don't match\n"
+        << "Vectors will be truncated to " << dimensions << "dimensions\n";
+    }
 
+    float ans = 0;
+    for (int i=0; i<dimensions; i++) {
+        ans += this->value[i] * arg.value[i];
+    }
+
+    return ans;
 }
 
 /**
@@ -141,7 +203,15 @@ float  Vector::dot(Vector arg) {
  * @return Vector 
  */
 Vector Vector::product(float arg) {
+    float *ans_value = new float[dimensions];
+    for (int i=0; i<dimensions; i++) {
+        ans_value[i] = this->value[i] * arg;
+    }
 
+    Vector ans(dimensions, ans_value);
+    delete ans_value;
+
+    return ans;
 }
 
 

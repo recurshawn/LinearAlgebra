@@ -18,9 +18,21 @@ public:
     Vector(const int size, float args[]) {
         value = new float[size];
         dimensions = size;
-        for (int i=0; i<dimensions; i++)
-        {
+        for (int i=0; i<dimensions; i++) {
             value[i] = args[i];
+        }
+    }
+
+    /**
+     * @brief Copy Constructor, allows deep copy of values
+     * 
+     * @param arg Vector to be copied
+     */
+    Vector(const Vector &arg) {
+        this->value = new float[arg.dimensions];
+        this->dimensions = arg.dimensions;
+        for (int i=0; i<dimensions; i++) {
+            this->value[i] = arg.value[i];
         }
     }
 

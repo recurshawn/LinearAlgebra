@@ -4,10 +4,9 @@
 #define VECTOR // double inclusion guard
 
 class Vector {
-private:
+public:
     float *value;
     int dimensions;
-public:
     /**
      * @brief Construct a new Vector object
      * 

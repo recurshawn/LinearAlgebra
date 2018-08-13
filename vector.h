@@ -85,6 +85,15 @@ public:
         return this->product(arg);
     } 
 
+    /* Assignment, ~just~ almost like the copy constructor */
+    void operator=(Vector arg) {
+        //this->value = new float[arg.dimensions];
+        this->dimensions = arg.dimensions;
+        for (int i=0; i<dimensions; i++) {
+            this->value[i] = arg.value[i];
+        }
+    }
+
 };
 
 /**

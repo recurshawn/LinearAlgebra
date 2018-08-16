@@ -7,6 +7,16 @@ class Vector {
 public:
     float *value;
     int dimensions;
+
+    /**
+     * @brief Default Contructor. 0 dimensional. value points to NULL
+     * 
+     */
+    Vector() {
+        this->value = NULL;
+        this->dimensions = 0;
+    }
+
     /**
      * @brief Construct a new Vector object
      * 
@@ -29,6 +39,8 @@ public:
      * @param arg Vector to be copied
      */
     Vector(const Vector &arg) {
+        if (this->value != NULL)
+            delete this->value;
         this->value = new float[arg.dimensions];
         this->dimensions = arg.dimensions;
         for (int i=0; i<dimensions; i++) {

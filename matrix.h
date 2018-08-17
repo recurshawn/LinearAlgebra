@@ -151,11 +151,43 @@ Matrix Matrix::sub(const Matrix &arg) {
 }
 
 Matrix Matrix::multiply(const Matrix &arg) {
+    if (this->col != arg.row) {
+        std::cerr << "ERROR: Cannot multiply matrices [" 
+        << this->row << "][" << this->col << "]x[" << arg.row << "][" << arg.col << "]\n"
+        << "Empty matrix will be returned.\n";
+        return Matrix();
+    }
 
+    Matrix ans(this->row, arg.col, ZERO);
+
+    for (int i=0; i<ans.row; i++) {
+        for (int j=0; j<ans.col; j++) {
+            for (int k=0; k<arg.row; k++) {
+                ans.values[i][j] += this->values[i][k] * arg.values[k][j];
+            }
+        }
+    }
+
+    return ans;
 }
 
 Vector Matrix::multiply(const Vector &arg) {
+    if (this->col != arg.dimensions) {
+        std::cerr << "ERROR: Cannot multiply matrice and vector [" 
+        << this->row << "][" << this->col << "]x[" << arg.dimensions << "]\n"
+        << "Empty vector will be returned.\n";
+        return Vector();
+    }
 
+    Vector ans(this->row);
+
+    for (int i=0; i<ans.dimensions; i++) {
+        for( int j=0; j<this->col; j++) {
+            ans.value[i] += this->values[i][j] * arg.value[j];
+        }
+    }
+
+    return ans;
 }
 
 #endif //MATRIX

@@ -117,6 +117,12 @@ public:
     }
 };
 
+/**
+ * @brief Add two matrices together
+ * 
+ * @param arg the matrix to be added to this matrix
+ * @return Matrix
+ */
 Matrix Matrix::add(const Matrix &arg) {
     Matrix ans(MIN(this->row, arg.row), MIN(this->col, arg.col), ZERO);
     if ((this->row != arg.row) || (this->col != arg.col)) {
@@ -133,6 +139,12 @@ Matrix Matrix::add(const Matrix &arg) {
     return ans;
 }
 
+/**
+ * @brief Subtract one matrix from another
+ * 
+ * @param arg Matrix to be subtracted from this matrix
+ * @return Matrix
+ */
 Matrix Matrix::sub(const Matrix &arg) {
     Matrix ans(MIN(this->row, arg.row), MIN(this->col, arg.col), ZERO);
 
@@ -150,6 +162,12 @@ Matrix Matrix::sub(const Matrix &arg) {
     return ans;
 }
 
+/**
+ * @brief Multiply two matrices together 
+ * 
+ * @param arg Matrix to be multiplied with this matrix
+ * @return Matrix
+ */
 Matrix Matrix::multiply(const Matrix &arg) {
     if (this->col != arg.row) {
         std::cerr << "ERROR: Cannot multiply matrices [" 
@@ -171,6 +189,12 @@ Matrix Matrix::multiply(const Matrix &arg) {
     return ans;
 }
 
+/**
+ * @brief Multiply a vector with this matrix
+ * 
+ * @param arg Vector to be multiplied with this matrix
+ * @return Vector 
+ */
 Vector Matrix::multiply(const Vector &arg) {
     if (this->col != arg.dimensions) {
         std::cerr << "ERROR: Cannot multiply matrice and vector [" 

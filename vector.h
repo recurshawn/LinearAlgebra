@@ -9,11 +9,11 @@ public:
     int dimensions;
 
     /**
-     * @brief Default Contructor. 0 dimensional. value points to NULL
+     * @brief Default Contructor. 0 dimensional. value points to nullptr
      * 
      */
     Vector() {
-        value = NULL;
+        value = nullptr;
         dimensions = 0;
     }
 
@@ -52,7 +52,7 @@ public:
      * @param arg Vector to be copied
      */
     Vector(const Vector &arg) : Vector() {
-        if (value != NULL)
+        if (value != nullptr)
             delete value;
         value = new float[arg.dimensions];
         dimensions = arg.dimensions;
@@ -112,10 +112,20 @@ public:
 
     /* Assignment, ~just~ almost like the copy constructor */
     void operator=(Vector arg) {
-        //this->value = new float[arg.dimensions];
-        this->dimensions = arg.dimensions;
+        if (value != nullptr)
+            delete value;
+        
+        if (arg.value == nullptr ) {
+            value = nullptr;
+        }
+        else {
+            value = new float[arg.dimensions];
+        }
+        
+        dimensions = arg.dimensions;
+        
         for (int i=0; i<dimensions; i++) {
-            this->value[i] = arg.value[i];
+            value[i] = arg.value[i];
         }
     }
 

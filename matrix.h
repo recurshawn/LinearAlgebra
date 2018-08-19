@@ -13,11 +13,11 @@ public:
     int row, col;
     
     /**
-     * @brief Construct a new Matrix object. Default constructor. Sets values to NULL or 0
+     * @brief Construct a new Matrix object. Default constructor. Sets values to nullptr or 0
      * 
      */
     Matrix() {
-        values = NULL;
+        values = nullptr;
         row = col = 0;
     }
 
@@ -28,7 +28,7 @@ public:
      */
     Matrix(const Matrix &arg) : Matrix() {
         // Clear the old attributes first
-        if ((row!=0) || (values!=NULL)) {
+        if ((row!=0) || (values!=nullptr)) {
             // Go through the inital column
             for (int i=0; i<row; i++) {
                 delete values[i];

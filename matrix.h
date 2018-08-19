@@ -26,7 +26,7 @@ public:
      * 
      * @param arg Vector object to be copied
      */
-    Matrix(const Matrix &arg) {
+    Matrix(const Matrix &arg) : Matrix() {
         // Clear the old attributes first
         if ((row!=0) || (values!=NULL)) {
             // Go through the inital column
@@ -35,14 +35,14 @@ public:
             }
         }
 
-        this->row = arg.row;
-        this->col = arg.col;
+        row = arg.row;
+        col = arg.col;
         
-        this->values = new float *[row];
+        values = new float *[row];
         for (int i=0; i<row; i++) {
-            this->values[i] = new float[col];
+            values[i] = new float[col];
             for (int j=0; j<col; j++) {
-                this->values[i][j] = arg.values[i][j];
+                values[i][j] = arg.values[i][j];
             }
         }
     }
@@ -54,14 +54,14 @@ public:
      * @param args The values to be filled into each cell
      */
     Matrix(int rows, int columns, const float *args[]) {
-        this->row = rows;
-        this->col = columns;
+        row = rows;
+        col = columns;
         
-        this->values = new float *[row];
+        values = new float *[row];
         for (int i=0; i<row; i++) {
-            this->values[i] = new float[col];
+            values[i] = new float[col];
             for (int j=0; j<col; j++) {
-                this->values[i][j] = args[i][j];
+                values[i][j] = args[i][j];
             }
         }
     }
@@ -74,17 +74,17 @@ public:
      * @param matrix_type type of matrix @code enum matrix_type {ZERO, IDENTITY} @endcode
      */
     Matrix(int rows, int columns, enum matrix_type arg) {
-        this->row = rows;
-        this->col = columns;
+        row = rows;
+        col = columns;
 
-        this->values = new float *[row];
+        values = new float *[row];
         for (int i=0; i<row; i++) {
-            this->values[i] = new float[col];
+            values[i] = new float[col];
             for (int j=0; j<col; j++) {
                 if ((arg == IDENTITY) && (i==j))
-                    this->values[i][j] = 1.0f;
+                    values[i][j] = 1.0f;
                 else
-                    this->values[i][j] = 0.0f;
+                    values[i][j] = 0.0f;
             }
         }
     }

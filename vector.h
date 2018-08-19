@@ -13,8 +13,8 @@ public:
      * 
      */
     Vector() {
-        this->value = NULL;
-        this->dimensions = 0;
+        value = NULL;
+        dimensions = 0;
     }
 
     /**
@@ -51,13 +51,13 @@ public:
      * 
      * @param arg Vector to be copied
      */
-    Vector(const Vector &arg) {
-        if (this->value != NULL)
-            delete this->value;
-        this->value = new float[arg.dimensions];
-        this->dimensions = arg.dimensions;
+    Vector(const Vector &arg) : Vector() {
+        if (value != NULL)
+            delete value;
+        value = new float[arg.dimensions];
+        dimensions = arg.dimensions;
         for (int i=0; i<dimensions; i++) {
-            this->value[i] = arg.value[i];
+            value[i] = arg.value[i];
         }
     }
 
@@ -76,7 +76,7 @@ public:
     Vector subtract(Vector);    // Vector-Vector subtraction
     Vector subtract(float);     // Vector-Scalar subtraction
     Vector negate();            // Unary Vector Negation
-    float  dot(Vector);          // Vector-Vector Dot Product
+    float  dot(Vector);         // Vector-Vector Dot Product
     Vector product(float);      // Vector-Scalar Product
 
 

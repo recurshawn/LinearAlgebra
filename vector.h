@@ -52,8 +52,6 @@ public:
      * @param arg Vector to be copied
      */
     Vector(const Vector &arg) : Vector() {
-        if (value != nullptr)
-            delete value;
         value = new float[arg.dimensions];
         dimensions = arg.dimensions;
         for (int i=0; i<dimensions; i++) {
@@ -128,7 +126,6 @@ public:
             value[i] = arg.value[i];
         }
     }
-
 };
 
 /**

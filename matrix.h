@@ -27,14 +27,6 @@ public:
      * @param arg Vector object to be copied
      */
     Matrix(const Matrix &arg) : Matrix() {
-        // Clear the old attributes first
-        if ((row!=0) || (values!=nullptr)) {
-            // Go through the inital column
-            for (int i=0; i<row; i++) {
-                delete values[i];
-            }
-        }
-
         row = arg.row;
         col = arg.col;
         
@@ -114,6 +106,27 @@ public:
 
     inline Vector operator* (const Vector &arg) {
         return multiply(arg);
+    }
+
+    Vector operator= (const Vector &arg) {
+        // Clear the old attributes first
+        if ((row!=0) || (values!=nullptr)) {
+            // Go through the inital column
+            for (int i=0; i<row; i++) {
+                delete values[i];
+            }
+        }
+
+        row = arg.row;
+        col = arg.col;
+        
+        values = new float *[row];
+        for (int i=0; i<row; i++) {
+            values[i] = new float[col];
+            for (int j=0; j<col; j++) {
+                values[i][j] = arg.values[i][j];
+            }
+        }
     }
 };
 

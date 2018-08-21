@@ -1,8 +1,9 @@
-#include <iostream>
-#include "vector.h"
-
 #if !defined(MATRIX)
 #define MATRIX // Double Inclusion Guard
+
+#include <iostream>
+#include <initializer_list>
+#include "vector.h"
 
 enum matrix_type {ZERO, IDENTITY};
 #define MIN(a,b) (a<b?a:b)
@@ -26,7 +27,7 @@ public:
      * 
      * @param arg Vector object to be copied
      */
-    Matrix(const Matrix &arg) : Matrix() {
+    Matrix(const Matrix &arg) {
         row = arg.row;
         col = arg.col;
         

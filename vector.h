@@ -1,8 +1,8 @@
-#include <iostream>
-
 #if !defined(VECTOR)
 #define VECTOR // double inclusion guard
 
+#include <iostream>
+#include <initializer_list>
 class Vector {
 public:
     float *value;
@@ -20,16 +20,16 @@ public:
     /**
      * @brief Construct a new Vector object
      * 
-     * @param size the dimensions of the vector to be created
      * @param args the elements of the vector
-     * @code Vector(3, {1,2,3}) @endcode
+     * @code Vector A({1,2,3}) @endcode
+     * @code Vector A = {1,2,3} @endcode
      * returns the 3D vector [1 2 3]
      */
-    Vector(int size, float args[]) {
-        value = new float[size];
-        dimensions = size;
+    Vector(std::initializer_list<float> args) {
+        value = new float[args.size()];
+        dimensions = args.size();
         for (int i=0; i<dimensions; i++) {
-            value[i] = args[i];
+            value[i] = (args.begin())[i];
         }
     }
 

@@ -2,7 +2,6 @@
 #define MATRIX // Double Inclusion Guard
 
 #include <iostream>
-#include <initializer_list>
 #include "vector.h"
 
 enum matrix_type {ZERO, IDENTITY};
@@ -109,7 +108,7 @@ public:
         return multiply(arg);
     }
 
-    Vector operator= (const Vector &arg) {
+    Matrix operator= (const Matrix &arg) {
         // Clear the old attributes first
         if ((row!=0) || (values!=nullptr)) {
             // Go through the inital column

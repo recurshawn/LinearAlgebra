@@ -34,6 +34,22 @@ public:
     }
 
     /**
+     * @brief Construct a new Vector object
+     * 
+     * @param size the dimensions of the vector to be created
+     * @param args the elements of the vector
+     * @code Vector(3, {1,2,3}) @endcode
+     * returns the 3D vector [1 2 3]
+     */
+    Vector(int size, float args[]) {
+        value = new float[size];
+        dimensions = size;
+        for (int i=0; i<dimensions; i++) {
+            value[i] = args[i];
+        }
+    }
+
+    /**
      * @brief Construct a new Vector object. Make it empty
      * 
      * @param size the dimension of the vector to be created

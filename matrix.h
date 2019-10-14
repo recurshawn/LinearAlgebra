@@ -82,9 +82,9 @@ public:
     }
 
     /* Matrix Operations (that I'm interested in) */
-    /* Add
-     * Subtract
-     * Multiply - Matrix*Matrix & Matrix*Vector
+    /* Addition
+     * Subtraction
+     * Multiplication - Matrix*Matrix & Matrix*Vector
      */
     Matrix add(const Matrix &arg);
     Matrix sub(const Matrix &arg);
